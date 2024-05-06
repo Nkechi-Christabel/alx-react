@@ -2,7 +2,8 @@ import "./body.css";
 import $ from "jquery";
 import _ from "lodash";
 
-console.log("Init body");
+$("body").append("<button>Click here to get started</button>");
+$("body").append('<p id="count"><p>');
 
 let count = 0;
 
