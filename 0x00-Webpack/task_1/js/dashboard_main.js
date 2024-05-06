@@ -5,9 +5,7 @@ $(document).ready(function () {
   // Elements
   $("body").append("<p>Holberton Dashboard</p>");
   $("body").append("<p>Dashboard data for the students</p>");
-  $("body").append(
-    '<button id="startButton">Click here to get started</button>'
-  );
+  $("body").append("<button>Click here to get started</button>");
   $("body").append('<p id="count"></p>');
   $("body").append("<p>Copyright - Holberton School</p>");
 
@@ -19,5 +17,5 @@ $(document).ready(function () {
   }, 300);
 
   // Button click event
-  $("#startButton").on("click", updateCounter);
+  $("button").on("click", updateCounter);
 });
