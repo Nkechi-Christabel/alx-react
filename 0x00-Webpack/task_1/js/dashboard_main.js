@@ -19,5 +19,5 @@ $(document).ready(function () {
   }, 300);
 
   // Button click event
-  $("#startButton").click(updateCounter);
+  $("#startButton").on("click", updateCounter);
 });
