@@ -9,41 +9,26 @@ module.exports = {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(gif|png|jp?g|svg)$/i,
         use: [
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: "assets",
-            },
-          },
+          "file-loader",
           {
             loader: "image-webpack-loader",
             options: {
-              mozjpeg: {
-                progressive: true,
-                quality: 65,
-              },
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.9],
-                speed: 4,
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              webp: {
-                quality: 75,
-              },
+              bypassOnDebug: true,
+              disable: true,
             },
           },
         ],
