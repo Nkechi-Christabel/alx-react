@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open"
+    "test": "jest",
+    "start": "webpack-dev-server --mode development --config config/webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +14,6 @@
     "@babel/core": "^7.24.5",
     "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
-    "@cfaester/enzyme-adapter-react-18": "^0.8.0",
     "babel-loader": "^9.1.3",
     "css-loader": "^7.1.1",
     "enzyme": "^3.11.0",
