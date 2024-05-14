@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Notifications.css';
 
 class NotificationItem extends React.PureComponent {
@@ -26,5 +27,23 @@ class NotificationItem extends React.PureComponent {
     );
   }
 }
+
+NotificationItem.propTypes = {
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  __html: PropTypes.shape({
+    html: PropTypes.string,
+  }),
+  markAsRead: PropTypes.func,
+  id: PropTypes.number,
+};
+
+NotificationItem.defaultProps = {
+  type: 'default',
+  markAsRead: () => {
+    console.log('empty func');
+  },
+  id: 0,
+};
 
 export default NotificationItem;

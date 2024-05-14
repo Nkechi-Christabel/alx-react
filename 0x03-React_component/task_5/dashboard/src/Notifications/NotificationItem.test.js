@@ -18,10 +18,12 @@ describe('rendering components', () => {
     );
   });
 
-  it('renders correct html from  html="<u>test</u>" props', () => {
+  it('renders correct html from html="<u>test</u>" props', () => {
     const wrapper = shallow(<NotificationItem />);
 
     wrapper.setProps({ html: '<u>test</u>' });
-    expect(wrapper.html()).toEqual('<div><li><u>test</u></li></div>');
+    expect(wrapper.html()).toEqual(
+      '<div><li data-notification-type="default"><u>test</u></li></div>'
+    );
   });
 });
