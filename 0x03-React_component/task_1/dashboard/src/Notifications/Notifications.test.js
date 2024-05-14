@@ -73,7 +73,7 @@ describe('Notification tests', () => {
     );
   });
 
-  it('renders "No new notifications for now" instead of "Here is the list of notifications" when listNotifications is empty', () => {
+  it('renders "No new notifications for now" when listNotifications is empty', () => {
     const wrapper = shallow(
       <Notifications displayDrawer={true} listNotifications={[]} />
     );
