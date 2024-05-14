@@ -1,7 +1,7 @@
 import React from 'react';
 import './Notifications.css';
 
-class NotificationItem extends React.Component {
+class NotificationItem extends React.PureComponent {
   constructor(props) {
     super(props);
   }
