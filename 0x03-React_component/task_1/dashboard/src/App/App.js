@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <div className='App'>
-          <div className='heading-section'>
+          <div>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
@@ -66,7 +66,9 @@ class App extends Component {
 
 App.defaultProps = {
   isLoggedIn: false,
-  logOut: () => {},
+  logOut: () => {
+    return;
+  },
 };
 
 App.propTypes = {

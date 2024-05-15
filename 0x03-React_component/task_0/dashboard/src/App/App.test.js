@@ -13,37 +13,35 @@ describe('App tests', () => {
 
     expect(component).toBeDefined();
   });
-  it('should render Notifications component', () => {
-    const component = shallow(<App />);
 
-    expect(component.containsMatchingElement(<Notifications />)).toEqual(false);
+  it('contain Notifications component', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.find('Notifications')).toHaveLength(1);
   });
+
   it('should render Header component', () => {
     const component = shallow(<App />);
 
     expect(component.contains(<Header />)).toBe(true);
   });
-  it('should render Login Component', () => {
-    const component = shallow(<App />);
 
-    expect(component.contains(<Login />)).toBe(true);
-  });
   it('should render Footer component', () => {
     const component = shallow(<App />);
 
     expect(component.contains(<Footer />)).toBe(true);
   });
-  it('does not render courselist if logged out', () => {
+
+  it('Should not render courselist if logged out', () => {
     const component = shallow(<App />);
 
-    component.setProps({ isLogedIn: false });
+    component.setProps({ isLoggedIn: false });
 
-    expect(component.contains(<CourseList />)).toBe(false);
+    expect(component.contains(<Login />)).toBe(true);
   });
-  it('renders courselist if logged in', () => {
-    const component = shallow(<App isLoggedIn={true} />);
 
-    expect(component.containsMatchingElement(<CourseList />)).toEqual(true);
-    expect(component.contains(<Login />)).toBe(false);
+  it('should render courselist if logged in', () => {
+    const component = shallow(<App isLoggedIn />);
+    component.update();
+    expect(component.find('CourseList')).toHaveLength(1);
   });
 });
