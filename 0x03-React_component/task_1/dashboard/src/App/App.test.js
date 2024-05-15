@@ -45,38 +45,27 @@ describe('App tests', () => {
   });
 });
 
-describe('When ctrl + h is pressed', () => {
-  it('calls logOut function', () => {
-    const mocked = jest.fn();
-    const wrapper = mount(<App logOut={mocked} />);
-    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
-    document.dispatchEvent(event);
+describe('App Component', () => {
+  let logOutMock, wrapper, alertMock;
 
-    expect(mocked).toHaveBeenCalledTimes(1);
+  beforeEach(() => {
+    logOutMock = jest.fn();
+    alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
+
+    wrapper = mount(<App logOut={logOutMock} />);
+  });
+
+  afterEach(() => {
+    alertMock.mockRestore();
     wrapper.unmount();
   });
 
-  document.alert = jest.fn();
-  it('checks that alert function is called', () => {
-    const wrapper = mount(<App />);
-    const spy = jest.spyOn(window, 'alert');
+  it('calls logOut and shows alert when control + h is pressed', () => {
+    // Simulate pressing control + h
     const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
     document.dispatchEvent(event);
 
-    expect(spy).toHaveBeenCalled();
-    spy.mockRestore();
-    wrapper.unmount();
+    expect(alertMock).toHaveBeenCalledWith('Logging you out');
+    expect(logOutMock).toHaveBeenCalled();
   });
-
-  it('checks that the alert is "Logging you out"', () => {
-    const wrapper = mount(<App />);
-    const spy = jest.spyOn(window, 'alert');
-    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
-    document.dispatchEvent(event);
-
-    expect(spy).toHaveBeenCalledWith('Logging you out');
-    jest.restoreAllMocks();
-    wrapper.unmount();
-  });
-  document.alert.mockClear();
 });
