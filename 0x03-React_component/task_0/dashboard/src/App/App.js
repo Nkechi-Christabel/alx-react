@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-
-import PropTypes from 'prop-types';
-import Notifications from '../Notifications/Notifications';
 import Header from '../Header/Header';
-import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
+import Login from '../Login/Login';
 import CourseList from '../CourseList/CourseList';
-
+import Notifications from '../Notifications/Notifications';
 import './App.css';
+import PropTypes from 'prop-types';
 import { getLatestNotification } from '../utils/utils';
 
 export default class App extends Component {
@@ -24,21 +22,18 @@ export default class App extends Component {
   ];
 
   render() {
-    const { isLoggedIn } = this.props;
     return (
       <React.Fragment>
         <div className='App'>
-          <div>
+          <div className='heading-section'>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
-          <div className='App-body'>
-            {isLoggedIn ? (
-              <CourseList listCourses={this.listCourses} />
-            ) : (
-              <Login />
-            )}
-          </div>
+          {this.props.isLoggedIn ? (
+            <CourseList listCourses={this.listCourses} />
+          ) : (
+            <Login />
+          )}
           <Footer />
         </div>
       </React.Fragment>
