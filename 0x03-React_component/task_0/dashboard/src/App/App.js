@@ -10,7 +10,7 @@ import CourseList from '../CourseList/CourseList';
 import './App.css';
 import { getLatestNotification } from '../utils/utils';
 
-class App extends Component {
+export default class App extends Component {
   listCourses = [
     { id: 1, name: 'ES6', credit: 60 },
     { id: 2, name: 'Webpack', credit: 20 },
@@ -24,6 +24,7 @@ class App extends Component {
   ];
 
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <React.Fragment>
         <div className='App'>
@@ -32,7 +33,7 @@ class App extends Component {
             <Header />
           </div>
           <div className='App-body'>
-            {this.props.isLoggedIn ? (
+            {isLoggedIn ? (
               <CourseList listCourses={this.listCourses} />
             ) : (
               <Login />
@@ -52,5 +53,3 @@ App.defaultProps = {
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
-
-export default App;
