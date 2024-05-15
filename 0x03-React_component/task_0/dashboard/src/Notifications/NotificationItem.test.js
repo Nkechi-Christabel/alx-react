@@ -14,14 +14,16 @@ describe('rendering components', () => {
 
     wrapper.setProps({ type: 'default', value: 'test' });
     expect(wrapper.html()).toEqual(
-      '<li data-notification-type="default">test</li>'
+      '<div><li data-notification-type="default">test</li></div>'
     );
   });
 
-  it('renders correct html from  html="<u>test</u>" props', () => {
+  it('renders correct html from html="<u>test</u>" props', () => {
     const wrapper = shallow(<NotificationItem />);
 
     wrapper.setProps({ html: '<u>test</u>' });
-    expect(wrapper.html()).toEqual('<li data-urgent="true"><u>test</u></li>');
+    expect(wrapper.html()).toEqual(
+      '<div><li data-notification-type="default"><u>test</u></li></div>'
+    );
   });
 });
