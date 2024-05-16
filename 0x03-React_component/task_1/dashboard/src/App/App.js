@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-
-import PropTypes from 'prop-types';
-import Notifications from '../Notifications/Notifications';
+import React from 'react';
 import Header from '../Header/Header';
-import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
+import Login from '../Login/Login';
 import CourseList from '../CourseList/CourseList';
-
+import Notifications from '../Notifications/Notifications';
 import './App.css';
+import PropTypes from 'prop-types';
 import { getLatestNotification } from '../utils/utils';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -43,21 +42,18 @@ class App extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
     return (
       <React.Fragment>
         <div className='App'>
-          <div>
+          <div className='heading-section'>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
-          <div className='App-body'>
-            {isLoggedIn ? (
-              <CourseList listCourses={this.listCourses} />
-            ) : (
-              <Login />
-            )}
-          </div>
+          {this.props.isLoggedIn ? (
+            <CourseList listCourses={this.listCourses} />
+          ) : (
+            <Login />
+          )}
           <Footer />
         </div>
       </React.Fragment>
@@ -67,7 +63,9 @@ class App extends Component {
 
 App.defaultProps = {
   isLoggedIn: false,
-  logOut: () => {},
+  logOut: () => {
+    return;
+  },
 };
 
 App.propTypes = {
