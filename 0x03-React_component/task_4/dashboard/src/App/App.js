@@ -45,15 +45,16 @@ class App extends Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <React.Fragment>
         <div className='App'>
-          <div className='heading-section'>
+          <div>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
           <div className='App-body'>
-            {this.props.isLoggedIn ? (
+            {isLoggedIn ? (
               <BodySectionWithMarginBottom title='Course list'>
                 <CourseList listCourses={this.listCourses} />
               </BodySectionWithMarginBottom>
