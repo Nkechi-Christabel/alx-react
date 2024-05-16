@@ -38,7 +38,7 @@ function App({ isLoggedIn }) {
 }
 
 App.defaultProps = {
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 App.propTypes = {
