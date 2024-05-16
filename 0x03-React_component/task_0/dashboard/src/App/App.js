@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Login from '../Login/Login';
-import CourseList from '../CourseList/CourseList';
-import Notifications from '../Notifications/Notifications';
-import './App.css';
 import PropTypes from 'prop-types';
+import './App.css';
+import Notifications from '../Notifications/Notifications';
+import Header from '../Header/Header';
+import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
+import CourseList from '../CourseList/CourseList';
 import { getLatestNotification } from '../utils/utils';
 
-export default class App extends Component {
+class App extends Component {
   listCourses = [
     { id: 1, name: 'ES6', credit: 60 },
     { id: 2, name: 'Webpack', credit: 20 },
@@ -22,18 +22,21 @@ export default class App extends Component {
   ];
 
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <React.Fragment>
-        <div className="App">
-          <div className="heading-section">
+        <div className='App'>
+          <div>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
-          {this.props.isLoggedIn ? (
-            <CourseList listCourses={this.listCourses} />
-          ) : (
-            <Login />
-          )}
+          <div className='App-body'>
+            {isLoggedIn ? (
+              <CourseList listCourses={this.listCourses} />
+            ) : (
+              <Login />
+            )}
+          </div>
           <Footer />
         </div>
       </React.Fragment>
@@ -48,3 +51,5 @@ App.defaultProps = {
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
+
+export default App;
