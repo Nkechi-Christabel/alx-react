@@ -14,7 +14,9 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
     <tr style={rowStyle}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan={2}>{textFirstCell}</th>
+          <th colSpan={2} style={headerStyle}>
+            {textFirstCell}
+          </th>
         ) : (
           <>
             <th style={headerStyle}>{textFirstCell}</th>
