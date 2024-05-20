@@ -33,10 +33,10 @@ describe('Notification tests', () => {
     expect(menuItem).toHaveLength(1);
   });
 
-  it('Notification with displayDrawer false', () => {
-    const wrapper = shallow(<Notifications />);
-    const notification = wrapper.find('div.Notifications');
-    expect(notification).toHaveLength(0);
+  it('does not display notifications when displayDrawer is false', () => {
+    const wrapper = shallow(<Notifications displayDrawer={false} />);
+
+    expect(wrapper.find('div.Notifications').exists()).toBe(false);
   });
 
   it('menuItem with displayDrawer true', () => {
