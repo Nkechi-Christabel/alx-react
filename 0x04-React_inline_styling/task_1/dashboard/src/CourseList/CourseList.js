@@ -1,70 +1,60 @@
-import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
-import CourseListRow from './CourseListRow';
+import React from "react";
+import { StyleSheet, css } from "aphrodite";
+import CourseListRow from "./CourseListRow";
+import PropTypes from "prop-types";
+import CourseShape from "./CourseShape";
 
-const CourseListRowHead = [
-  { cellOne: 'Available courses', cellTwo: null, isHeader: true },
-  { cellOne: 'Course name', cellTwo: 'Credit', isHeader: true },
-];
-
-const CourseList = ({ listCourses }) => {
+function CourseList({ listCourses }) {
   return (
-    <table className={css(styles.CourseList)}>
+    <table id="CourseList" className={css(styles.table)}>
       <thead>
-        {CourseListRowHead.map((course, idx) => (
-          <CourseListRow
-            key={idx}
-            textFirstCell={course.cellOne}
-            textSecondCell={course.cellTwo}
-            isHeader={course.isHeader}
-            classname={css(
-              course.cellTwo === null ? styles.colspanTwo : styles.th
-            )}
-          />
-        ))}
+        <CourseListRow textFirstCell="Available courses" isHeader={true} />
+        <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true} />
       </thead>
       <tbody>
-        {listCourses?.length ? (
-          listCourses.map(({ id, name, credit }) => (
-            <CourseListRow
-              key={id}
-              textFirstCell={name}
-              textSecondCell={credit}
-              classname={css(styles.td)}
-            />
-          ))
+        {listCourses.length > 0 ? (
+          listCourses.map(({ id, name, credit }) => <CourseListRow key={id} textFirstCell={name} textSecondCell={credit} />)
         ) : (
-          <CourseListRow
-            textFirstCell='No course available yet'
-            classname={css(styles.td)}
-          />
+          <CourseListRow textFirstCell="No course available yet" />
         )}
       </tbody>
     </table>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  CourseList: {
-    width: '100%',
-    marginTop: '0.6rem',
-    border: '1px solid #e8e8e8',
-    borderCollapse: 'collapse',
-  },
-
-  colspanTwo: {
-    textAlign: 'center',
+  table: {
+    marginTop: "2em",
+    width: "100%",
+    border: "1px solid #ddd",
+    fontSize: "1.2rem",
+    marginBottom: "15em",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 
   th: {
-    textAlign: 'left',
-    borderBottom: '1px solid #e8e8e8',
-    padding: '0.5rem',
+    borderBottom: "1px solid #ddd",
+    width: "80%",
   },
 
   td: {
-    padding: '0.5rem',
+    width: "80%",
+  },
+
+  tr: {
+    "nth-child(2)": {
+      textAlign: "left",
+    },
   },
 });
+
+CourseList.propTypes = {
+  listCourses: PropTypes.arrayOf(CourseShape),
+};
+
+CourseList.defaultProps = {
+  listCourses: [],
+};
 
 export default CourseList;
