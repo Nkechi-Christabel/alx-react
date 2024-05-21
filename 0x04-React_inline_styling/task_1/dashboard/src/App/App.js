@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 });
 
 App.defaultProps = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   logOut: () => {},
 };
 
