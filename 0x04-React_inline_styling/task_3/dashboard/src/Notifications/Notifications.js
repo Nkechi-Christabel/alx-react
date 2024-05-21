@@ -76,12 +76,26 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: '1rem',
     margin: '1.4rem',
+    '@media (max-width: 568px)': {
+      width: '100%',
+      margin: '0',
+    },
   },
 
   Notifications: {
     position: 'relative',
     padding: '1rem',
     border: '1px dashed #e0364b',
+    '@media (max-width: 568px)': {
+      fontSize: '20px',
+      position: 'absolute',
+      top: '0',
+      height: '100vh',
+      width: '100%',
+      padding: '0',
+      border: 'none',
+      background: '#fff',
+    },
   },
 
   menuItem: {
@@ -97,7 +111,7 @@ Notifications.propTypes = {
 };
 
 Notifications.defaultProps = {
-  displayDrawer: false,
+  displayDrawer: true,
   listNotifications: [],
 };
 

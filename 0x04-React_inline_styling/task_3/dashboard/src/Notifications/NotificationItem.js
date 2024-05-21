@@ -15,7 +15,7 @@ class NotificationItem extends React.PureComponent {
         {type && value ? (
           <li
             data-notification-type={type}
-            className={css(selectColor)}
+            className={css(selectColor, styles.li)}
             onClick={() => markAsRead(id)}
           >
             {value}
@@ -25,7 +25,7 @@ class NotificationItem extends React.PureComponent {
           <li
             data-notification-type={type}
             dangerouslySetInnerHTML={{ __html: html }}
-            className={css(selectColor)}
+            className={css(selectColor, styles.li)}
             onClick={() => markAsRead(id)}
           ></li>
         ) : null}
@@ -41,6 +41,14 @@ const styles = StyleSheet.create({
 
   urgent: {
     color: 'red',
+  },
+
+  li: {
+    '@media (max-width: 568px)': {
+      fontSize: '20px',
+      borderBottom: '2px solid #000',
+      padding: '10px 8px',
+    },
   },
 });
 
