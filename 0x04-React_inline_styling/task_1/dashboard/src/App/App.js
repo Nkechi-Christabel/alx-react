@@ -1,19 +1,19 @@
-import React from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import Login from '../Login/Login';
-import CourseList from '../CourseList/CourseList';
-import Notifications from '../Notifications/Notifications';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
-import { StyleSheet, css } from 'aphrodite';
-import PropTypes from 'prop-types';
+import Notifications from '../Notifications/Notifications';
+import Header from '../Header/Header';
+import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
+import CourseList from '../CourseList/CourseList';
+
 import { getLatestNotification } from '../utils/utils';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
-
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -31,7 +31,6 @@ class App extends React.Component {
 
   handleKeyPress(e) {
     if (e.ctrlKey && e.key === 'h') {
-      e.preventDefault();
       alert('Logging you out');
       this.props.logOut();
     }
@@ -45,30 +44,33 @@ class App extends React.Component {
   }
 
   render() {
+    const { isLoggedIn } = this.props;
     return (
       <React.Fragment>
         <div className={css(styles.App)}>
-          <div className='heading-section'>
+          <div>
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
-          {this.props.isLoggedIn ? (
-            <BodySectionWithMarginBottom title='Course list'>
-              <CourseList listCourses={this.listCourses} />
-            </BodySectionWithMarginBottom>
-          ) : (
-            <BodySectionWithMarginBottom title='Log in to continue'>
-              <Login />
-            </BodySectionWithMarginBottom>
-          )}
-          <BodySection title='News from the school'>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perspiciatis at tempora odio, necessitatibus repudiandae
-              reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
-              ipsa iste vero dolor voluptates.
-            </p>
-          </BodySection>
+          <div className={css(styles['App-body'])}>
+            {isLoggedIn ? (
+              <BodySectionWithMarginBottom title='Course list'>
+                <CourseList listCourses={this.listCourses} />
+              </BodySectionWithMarginBottom>
+            ) : (
+              <BodySectionWithMarginBottom title='Log in to continue'>
+                <Login />
+              </BodySectionWithMarginBottom>
+            )}
+            <BodySection title='News from the School'>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
+                explicabo cupiditate! Voluptas maxime omnis, incidunt sapiente
+                odit quae sint possimus cumque corrupti quos atque quam
+                repudiandae ducimus rem, commodi error!
+              </p>
+            </BodySection>
+          </div>
           <Footer />
         </div>
       </React.Fragment>
@@ -78,18 +80,21 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   App: {
-    height: '100vh',
-    maxWidth: '100vw',
-    position: 'relative',
-    fontFamily: 'Arial, Helvetica, sans-serif',
+    fontSize: '1.2rem',
+    padding: '1rem',
+    height: '60vh',
+  },
+
+  'App-body': {
+    padding: '2rem',
+    height: '100%',
+    borderBottom: '4px solid #e0364b',
   },
 });
 
 App.defaultProps = {
   isLoggedIn: false,
-  logOut: () => {
-    return;
-  },
+  logOut: () => {},
 };
 
 App.propTypes = {
