@@ -5,7 +5,7 @@ import Logo from '../assets/holberton-logo.jpg';
 const Header = () => {
   return (
     <div className={css(styles['App-header'])}>
-      <img src={Logo} className={css(styles['logo'])} alt='logo' />
+      <img src={Logo} className={css(styles['App-logo'])} alt='logo' />
       <h1>School dashboard</h1>
     </div>
   );
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     borderBottom: '4px solid #e0364b',
   },
 
-  logo: {
+  'App-logo': {
     width: '200px',
     height: '200px',
   },
