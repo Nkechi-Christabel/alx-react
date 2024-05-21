@@ -71,7 +71,7 @@ class App extends Component {
               </p>
             </BodySection>
           </div>
-          <div className={css(styles['App-footer'])}>
+          <div className={css(styles['footer'])}>
             <Footer />
           </div>
         </div>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     borderBottom: '4px solid #e0364b',
   },
 
-  'App-footer': {
+  footer: {
     fontSize: '1.2rem',
     fontStyle: 'italic',
     textAlign: 'center',
