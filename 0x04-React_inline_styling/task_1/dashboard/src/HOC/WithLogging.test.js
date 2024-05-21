@@ -1,8 +1,16 @@
 /** @jest-environment jsdom */
 import React from 'react';
 import { mount } from 'enzyme';
+import { StyleSheetTestUtils } from 'aphrodite';
 import WithLogging from './WithLogging';
 import Login from '../Login/Login';
+
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 
 describe('WithLogging HOC', () => {
   let consoleLogSpy;
