@@ -17,7 +17,7 @@ const CourseList = ({ listCourses }) => {
             textFirstCell={course.cellOne}
             textSecondCell={course.cellTwo}
             isHeader={course.isHeader}
-            className={css(
+            classname={css(
               course.cellTwo === null ? styles.colspanTwo : styles.th
             )}
           />
@@ -30,13 +30,13 @@ const CourseList = ({ listCourses }) => {
               key={id}
               textFirstCell={name}
               textSecondCell={credit}
-              className={css(styles.td)}
+              classname={css(styles.td)}
             />
           ))
         ) : (
           <CourseListRow
             textFirstCell='No course available yet'
-            className={css(styles.td)}
+            classname={css(styles.td)}
           />
         )}
       </tbody>

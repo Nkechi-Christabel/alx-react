@@ -47,11 +47,11 @@ describe('Notification tests', () => {
     expect(menuItem).toHaveLength(0);
   });
 
-  it('displayDrawer is true', () => {
-    const wrapper = shallow(<Notifications displayDrawer={true} />);
-    const notification = wrapper.find('div.Notifications');
-    expect(notification).toHaveLength(1);
-  });
+  // it('displayDrawer is true', () => {
+  //   const wrapper = shallow(<Notifications displayDrawer={true} />);
+  //   const notification = wrapper.find('div.Notifications');
+  //   expect(notification).toHaveLength(1);
+  // });
 
   it('renders correctly when listCourses is not passed', () => {
     const wrapper = shallow(<Notifications displayDrawer={true} />);

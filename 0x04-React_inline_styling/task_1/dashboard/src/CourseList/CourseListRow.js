@@ -5,7 +5,7 @@ const CourseListRow = ({
   isHeader,
   textFirstCell,
   textSecondCell,
-  className,
+  classname,
 }) => {
   const rowStyle = {
     backgroundColor: '#f5f5f5ab',
@@ -19,23 +19,23 @@ const CourseListRow = ({
     <tr style={rowStyle}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan={2} style={headerStyle} className={className}>
+          <th colSpan={2} style={headerStyle} classname={classname}>
             {textFirstCell}
           </th>
         ) : (
           <>
-            <th style={headerStyle} className={className}>
+            <th style={headerStyle} classname={classname}>
               {textFirstCell}
             </th>
-            <th style={headerStyle} className={className}>
+            <th style={headerStyle} classname={classname}>
               {textSecondCell}
             </th>
           </>
         )
       ) : (
         <>
-          <td className={className}>{textFirstCell}</td>
-          <td className={className}>{textSecondCell}</td>
+          <td classname={classname}>{textFirstCell}</td>
+          <td classname={classname}>{textSecondCell}</td>
         </>
       )}
     </tr>
@@ -45,14 +45,14 @@ const CourseListRow = ({
 CourseListRow.defaultProps = {
   isHeader: false,
   textSecondCell: null,
-  className: PropTypes.string,
+  classname: '',
 };
 
 CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
   textFirstCell: PropTypes.string.isRequired,
   textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  className: '',
+  classname: PropTypes.string,
 };
 
 export default CourseListRow;
