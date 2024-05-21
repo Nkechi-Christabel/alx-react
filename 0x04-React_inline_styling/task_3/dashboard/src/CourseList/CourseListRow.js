@@ -19,23 +19,23 @@ const CourseListRow = ({
     <tr style={rowStyle}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan={2} style={headerStyle} classname={classname}>
+          <th colSpan={2} style={headerStyle} className={classname}>
             {textFirstCell}
           </th>
         ) : (
           <>
-            <th style={headerStyle} classname={classname}>
+            <th style={headerStyle} className={classname}>
               {textFirstCell}
             </th>
-            <th style={headerStyle} classname={classname}>
+            <th style={headerStyle} className={classname}>
               {textSecondCell}
             </th>
           </>
         )
       ) : (
         <>
-          <td classname={classname}>{textFirstCell}</td>
-          <td classname={classname}>{textSecondCell}</td>
+          <td className={classname}>{textFirstCell}</td>
+          <td className={classname}>{textSecondCell}</td>
         </>
       )}
     </tr>
@@ -52,7 +52,6 @@ CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
   textFirstCell: PropTypes.string.isRequired,
   textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
   classname: PropTypes.string,
 };
 

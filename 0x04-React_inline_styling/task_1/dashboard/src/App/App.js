@@ -90,6 +90,13 @@ const styles = StyleSheet.create({
     height: '100%',
     borderBottom: '4px solid #e0364b',
   },
+
+  'App-footer': {
+    fontSize: '1.2rem',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    paddingTop: '2rem',
+  },
 });
 
 App.defaultProps = {
