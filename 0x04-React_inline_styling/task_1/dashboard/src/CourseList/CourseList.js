@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import './CourseList.css';
 import CourseListRow from './CourseListRow';
 
 const CourseListRowHead = [
