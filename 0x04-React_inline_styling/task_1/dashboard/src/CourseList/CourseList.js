@@ -44,21 +44,6 @@ const styles = StyleSheet.create({
     border: '1px solid #e8e8e8',
     borderCollapse: 'collapse',
   },
-
-  th: {
-    borderBottom: '1px solid #ddd',
-    width: '80%',
-  },
-
-  td: {
-    width: '80%',
-  },
-
-  tr: {
-    'nth-child(2)': {
-      textAlign: 'left',
-    },
-  },
 });
 
 export default CourseList;
