@@ -71,9 +71,7 @@ class App extends Component {
               </p>
             </BodySection>
           </div>
-          <div className={css(styles['footer'])}>
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </React.Fragment>
     );
@@ -91,13 +89,6 @@ const styles = StyleSheet.create({
     padding: '2rem',
     height: '100%',
     borderBottom: '4px solid #e0364b',
-  },
-
-  footer: {
-    fontSize: '1.2rem',
-    fontStyle: 'italic',
-    textAlign: 'center',
-    paddingTop: '2rem',
   },
 });
 
