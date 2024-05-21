@@ -71,7 +71,9 @@ class App extends Component {
               </p>
             </BodySection>
           </div>
-          <Footer />
+          <div className={css(styles['App-footer'])}>
+            <Footer />
+          </div>
         </div>
       </React.Fragment>
     );
