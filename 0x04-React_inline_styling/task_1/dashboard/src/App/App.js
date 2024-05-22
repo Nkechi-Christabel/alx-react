@@ -52,7 +52,7 @@ class App extends Component {
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
-          <div className={css(styles['App-body'])}>
+          <div className={css(styles['body'])}>
             {isLoggedIn ? (
               <BodySectionWithMarginBottom title='Course list'>
                 <CourseList listCourses={this.listCourses} />
@@ -85,10 +85,17 @@ const styles = StyleSheet.create({
     height: '60vh',
   },
 
-  'App-body': {
+  body: {
     padding: '2rem',
     height: '100%',
     borderBottom: '4px solid #e0364b',
+  },
+
+  footer: {
+    fontSize: '1.2rem',
+    fontStyle: 'italic',
+    textAlign: 'center',
+    paddingTop: '2rem',
   },
 });
 
