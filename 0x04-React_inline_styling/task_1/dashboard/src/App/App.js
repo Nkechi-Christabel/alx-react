@@ -52,7 +52,7 @@ class App extends Component {
             <Notifications listNotifications={this.listNotifications} />
             <Header />
           </div>
-          <div className={css(styles['body'])}>
+          <div className={css(styles.body)}>
             {isLoggedIn ? (
               <BodySectionWithMarginBottom title='Course list'>
                 <CourseList listCourses={this.listCourses} />
@@ -71,7 +71,7 @@ class App extends Component {
               </p>
             </BodySection>
           </div>
-          <Footer />
+          <Footer className={css(styles.footer)} />
         </div>
       </React.Fragment>
     );
