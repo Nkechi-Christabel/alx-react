@@ -22,7 +22,7 @@ describe('rendering components', () => {
 
     wrapper.setProps({ type: 'default', value: 'test' });
     expect(wrapper.html()).toEqual(
-      '<div><li data-notification-type="default" class="default_1tsdo2i">test</li></div>'
+      '<div><li data-notification-type="default" class="default_1tsdo2i-o_O-li_1wvuywl">test</li></div>'
     );
   });
 
@@ -31,7 +31,7 @@ describe('rendering components', () => {
 
     wrapper.setProps({ html: '<u>test</u>' });
     expect(wrapper.html()).toEqual(
-      '<div><li data-notification-type="default" class="default_1tsdo2i"><u>test</u></li></div>'
+      '<div><li data-notification-type="default" class="default_1tsdo2i-o_O-li_1wvuywl"><u>test</u></li></div>'
     );
   });
 });

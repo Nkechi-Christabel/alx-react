@@ -71,7 +71,9 @@ class App extends Component {
               </p>
             </BodySection>
           </div>
-          <Footer footer={css(styles.footer)} />
+          <div className={css(styles.footer)}>
+            <Footer />
+          </div>
         </div>
       </React.Fragment>
     );
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
 });
 
 App.defaultProps = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   logOut: () => {},
 };
 
