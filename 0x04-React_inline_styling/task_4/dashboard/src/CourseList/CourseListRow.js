@@ -16,20 +16,16 @@ const CourseListRow = ({
   };
 
   return (
-    <tr style={rowStyle}>
+    <tr style={isHeader ? headerStyle : rowStyle}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan={2} style={headerStyle} classname={classname}>
+          <th colSpan={2} classname={classname}>
             {textFirstCell}
           </th>
         ) : (
           <>
-            <th style={headerStyle} classname={classname}>
-              {textFirstCell}
-            </th>
-            <th style={headerStyle} classname={classname}>
-              {textSecondCell}
-            </th>
+            <th classname={classname}>{textFirstCell}</th>
+            <th classname={classname}>{textSecondCell}</th>
           </>
         )
       ) : (

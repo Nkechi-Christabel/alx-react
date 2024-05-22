@@ -17,9 +17,6 @@ const CourseList = ({ listCourses }) => {
             textFirstCell={course.cellOne}
             textSecondCell={course.cellTwo}
             isHeader={course.isHeader}
-            classname={css(
-              course.cellTwo === null ? styles.colspanTwo : styles.th
-            )}
           />
         ))}
       </thead>
@@ -30,14 +27,10 @@ const CourseList = ({ listCourses }) => {
               key={id}
               textFirstCell={name}
               textSecondCell={credit}
-              classname={css(styles.td)}
             />
           ))
         ) : (
-          <CourseListRow
-            textFirstCell='No course available yet'
-            classname={css(styles.td)}
-          />
+          <CourseListRow textFirstCell='No course available yet' />
         )}
       </tbody>
     </table>
@@ -50,20 +43,6 @@ const styles = StyleSheet.create({
     marginTop: '0.6rem',
     border: '1px solid #e8e8e8',
     borderCollapse: 'collapse',
-  },
-
-  colspanTwo: {
-    textAlign: 'center',
-  },
-
-  th: {
-    textAlign: 'left',
-    borderBottom: '1px solid #e8e8e8',
-    padding: '0.5rem',
-  },
-
-  td: {
-    padding: '0.5rem',
   },
 });
 

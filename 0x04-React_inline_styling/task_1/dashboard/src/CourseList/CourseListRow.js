@@ -20,23 +20,19 @@ const CourseListRow = ({
     <tr style={rowStyle}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan={2} style={headerStyle} classname={classname}>
+          <th colSpan={2} style={headerStyle}>
             {textFirstCell}
           </th>
         ) : (
           <>
-            <th style={headerStyle} classname={classname}>
-              {textFirstCell}
-            </th>
-            <th style={headerStyle} classname={classname}>
-              {textSecondCell}
-            </th>
+            <th style={headerStyle}>{textFirstCell}</th>
+            <th style={headerStyle}>{textSecondCell}</th>
           </>
         )
       ) : (
         <>
-          <td classname={classname}>{textFirstCell}</td>
-          <td classname={classname}>{textSecondCell}</td>
+          <td>{textFirstCell}</td>
+          <td>{textSecondCell}</td>
         </>
       )}
     </tr>
@@ -46,15 +42,12 @@ const CourseListRow = ({
 CourseListRow.defaultProps = {
   isHeader: false,
   textSecondCell: null,
-  classname: '',
 };
 
 CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
   textFirstCell: PropTypes.string.isRequired,
   textSecondCell: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  classname: PropTypes.string,
 };
 
 export default CourseListRow;
