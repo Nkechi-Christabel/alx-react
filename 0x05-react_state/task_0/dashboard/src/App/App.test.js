@@ -82,18 +82,7 @@ describe('App Component', () => {
     expect(wrapper.state().displayDrawer).toEqual(false);
   });
 
-  // it('Checks that displayDrawer changes to true when calling handleDisplayDrawer', () => {
-  //   const wrapper = shallow(<App />);
-  //   expect(wrapper.state().displayDrawer).toEqual(false);
-
-  //   const instance = wrapper.instance();
-
-  //   instance.handleDisplayDrawer();
-
-  //   expect(wrapper.state().displayDrawer).toEqual(true);
-  // });
-
-  it('Checks that displayDrawer changes to false when calling handleHideDrawer', () => {
+  it('Checks that displayDrawer changes to true when handleDisplayDrawer is called and false when handleHideDrawer is called', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().displayDrawer).toEqual(false);
 
