@@ -33,7 +33,11 @@ class Notifications extends Component {
     return (
       <div className={css(styles['notification-wrapper'])}>
         {!displayDrawer && (
-          <div className={css(styles.menuItem)} onClick={handleDisplayDrawer}>
+          <div
+            className={css(styles.menuItem)}
+            onClick={handleDisplayDrawer}
+            id='menuItem'
+          >
             <p>Your notifications</p>
           </div>
         )}
@@ -71,6 +75,7 @@ class Notifications extends Component {
               }}
               aria-label='Close'
               onClick={handleHideDrawer}
+              id='close'
             >
               <img src={closeIcon} alt='closeIcon' width='18px' />
             </button>

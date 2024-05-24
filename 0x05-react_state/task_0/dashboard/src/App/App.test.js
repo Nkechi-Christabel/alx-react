@@ -1,73 +1,81 @@
 /** @jest-environment jsdom */
-import { shallow, mount } from 'enzyme';
 import React from 'react';
-import App from './App';
+import { shallow, mount } from 'enzyme';
 import { StyleSheetTestUtils } from 'aphrodite';
+import App from './App';
+import Login from '../Login/Login';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
-describe('<App />', () => {
-  beforeAll(() => {
-    StyleSheetTestUtils.suppressStyleInjection();
-  });
-  afterAll(() => {
-    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+beforeEach(() => {
+  StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
+
+describe('App tests', () => {
+  it('renders without crashing', () => {
+    const component = shallow(<App />);
+
+    expect(component).toBeDefined();
   });
 
-  it('App renders without crashing', () => {
+  it('contain Notifications component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.exists()).toEqual(true);
-  });
-  it('should contain the Notifications component', () => {
-    const wrapper = shallow(<App />);
-    wrapper.update();
     expect(wrapper.find('Notifications')).toHaveLength(1);
   });
-  it('should contain the Header component', () => {
-    const wrapper = shallow(<App />);
-    wrapper.update();
-    expect(wrapper.find('Header')).toHaveLength(1);
-  });
-  it('should contain the Login component', () => {
-    const wrapper = shallow(<App />);
-    wrapper.update();
-    expect(wrapper.find('Login')).toHaveLength(1);
-  });
-  it('should contain the Footer component', () => {
-    const wrapper = shallow(<App />);
-    wrapper.update();
-    expect(wrapper.find('Footer')).toHaveLength(1);
-  });
-  it('CourseList is not displayed with isLoggedIn false by default', () => {
-    const wrapper = shallow(<App />);
-    wrapper.update();
-    expect(wrapper.find('CourseList')).toHaveLength(0);
-  });
-  it('isLoggedIn is true', () => {
-    const wrapper = shallow(<App isLoggedIn />);
-    wrapper.update();
-    expect(wrapper.find('Login')).toHaveLength(0);
-    expect(wrapper.find('CourseList')).toHaveLength(1);
+
+  it('should render Header component', () => {
+    const component = shallow(<App />);
+
+    expect(component.contains(<Header />)).toBe(true);
   });
 
-  it('when the keys control and h are pressed the logOut function, passed as a prop, is called and the alert function is called with the string Logging you out', () => {
-    const events = {};
-    const logout = jest.fn();
+  it('should render Footer component', () => {
+    const component = shallow(<App />);
 
-    document.addEventListener = jest.fn((event, cb) => {
-      events[event] = cb;
-    });
-
-    window.alert = jest.fn();
-
-    shallow(<App logOut={logout} />);
-
-    events.keydown({ key: 'h', ctrlKey: true });
-
-    expect(window.alert).toHaveBeenCalledWith('Logging you out');
-    expect(logout).toHaveBeenCalled();
-
-    jest.restoreAllMocks();
+    expect(component.contains(<Footer />)).toBe(true);
   });
 
+  it('Should not render courselist if logged out', () => {
+    const component = shallow(<App />);
+
+    component.setProps({ isLoggedIn: false });
+
+    expect(component.contains(<Login />)).toBe(true);
+  });
+
+  it('should render courselist if logged in', () => {
+    const component = shallow(<App isLoggedIn />);
+    component.update();
+    expect(component.find('CourseList')).toHaveLength(1);
+  });
+});
+
+describe('App Component', () => {
+  let logOutMock, wrapper, alertMock;
+
+  beforeEach(() => {
+    logOutMock = jest.fn();
+    alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
+
+    wrapper = mount(<App logOut={logOutMock} />);
+  });
+
+  afterEach(() => {
+    alertMock.mockRestore();
+    wrapper.unmount();
+  });
+
+  it('calls logOut and shows alert when control + h is pressed', () => {
+    // Simulate pressing control + h
+    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'h' });
+    document.dispatchEvent(event);
+
+    expect(alertMock).toHaveBeenCalledWith('Logging you out');
+    expect(logOutMock).toHaveBeenCalled();
+  });
   it('Has default state for displayDrawer false', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().displayDrawer).toEqual(false);
