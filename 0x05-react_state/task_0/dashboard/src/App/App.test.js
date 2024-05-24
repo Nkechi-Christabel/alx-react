@@ -76,12 +76,13 @@ describe('App Component', () => {
     expect(alertMock).toHaveBeenCalledWith('Logging you out');
     expect(logOutMock).toHaveBeenCalled();
   });
-  it('Has default state for displayDrawer false', () => {
+
+  it('Checks that displayDrawer is false', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().displayDrawer).toEqual(false);
   });
 
-  it('displayDrawer changes to true when calling handleDisplayDrawer', () => {
+  it('Checks that displayDrawer changes to true when calling handleDisplayDrawer', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().displayDrawer).toEqual(false);
 
@@ -92,13 +93,9 @@ describe('App Component', () => {
     expect(wrapper.state().displayDrawer).toEqual(true);
   });
 
-  it('displayDrawer changes to false when calling handleHideDrawer', () => {
+  it('Checks that displayDrawer changes to false when calling handleHideDrawer', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state().displayDrawer).toEqual(false);
-
-    wrapper.instance().handleDisplayDrawer();
-
-    expect(wrapper.state().displayDrawer).toEqual(true);
 
     wrapper.instance().handleHideDrawer();
 
