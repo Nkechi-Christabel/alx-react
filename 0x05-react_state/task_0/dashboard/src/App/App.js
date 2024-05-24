@@ -18,6 +18,8 @@ class App extends Component {
       displayDrawer: false,
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
   }
 
   listCourses = [
@@ -47,9 +49,13 @@ class App extends Component {
     }
   }
 
-  handleDisplayDrawer = () => this.setState({ displayDrawer: true });
+  handleDisplayDrawer() {
+    this.setState({ displayDrawer: true });
+  }
 
-  handleHideDrawer = () => this.setState({ displayDrawer: false });
+  handleHideDrawer() {
+    this.setState({ displayDrawer: false });
+  }
 
   render() {
     const { isLoggedIn } = this.props;
