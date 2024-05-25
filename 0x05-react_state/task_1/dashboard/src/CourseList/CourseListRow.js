@@ -19,19 +19,19 @@ const CourseListRow = ({
     <tr style={isHeader ? headerStyle : rowStyle}>
       {isHeader ? (
         textSecondCell === null ? (
-          <th colSpan={2} classname={classname}>
+          <th colSpan={2} className={classname}>
             {textFirstCell}
           </th>
         ) : (
           <>
-            <th classname={classname}>{textFirstCell}</th>
-            <th classname={classname}>{textSecondCell}</th>
+            <th className={classname}>{textFirstCell}</th>
+            <th className={classname}>{textSecondCell}</th>
           </>
         )
       ) : (
         <>
-          <td classname={classname}>{textFirstCell}</td>
-          <td classname={classname}>{textSecondCell}</td>
+          <td className={classname}>{textFirstCell}</td>
+          <td className={classname}>{textSecondCell}</td>
         </>
       )}
     </tr>
