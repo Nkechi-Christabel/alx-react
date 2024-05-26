@@ -43,7 +43,7 @@ class Notifications extends PureComponent {
                       value={value}
                       html={html}
                       id={id}
-                      markNotificationAsRead={() => markNotificationAsRead(id)}
+                      markAsRead={() => markNotificationAsRead(id)}
                     />
                   ))}
                 </>

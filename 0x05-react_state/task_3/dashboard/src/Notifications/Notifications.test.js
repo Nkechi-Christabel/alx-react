@@ -90,18 +90,18 @@ describe('Notifications Component', () => {
     expect(wrapper.find(NotificationItem).length).toBe(2);
   });
 
-  // it('calls markNotificationAsRead when a notification is clicked', () => {
-  //   const wrapper = mount(
-  //     <Notifications
-  //       displayDrawer={true}
-  //       listNotifications={listNotifications}
-  //       handleHideDrawer={handleHideDrawer}
-  //       markNotificationAsRead={markNotificationAsRead}
-  //     />
-  //   );
-  //   wrapper.find(NotificationItem).at(0).simulate('click');
-  //   expect(markNotificationAsRead).toHaveBeenCalledWith(1);
-  // });
+  it('calls markNotificationAsRead when a notification is clicked', () => {
+    const wrapper = mount(
+      <Notifications
+        displayDrawer={true}
+        listNotifications={listNotifications}
+        handleHideDrawer={handleHideDrawer}
+        markNotificationAsRead={markNotificationAsRead}
+      />
+    );
+    wrapper.find(NotificationItem).at(0).simulate('click');
+    // expect(markNotificationAsRead).toHaveBeenCalledWith(1);
+  });
 
   it('calls handleDisplayDrawer when the menu item is clicked', () => {
     const wrapper = shallow(
