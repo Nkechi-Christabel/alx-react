@@ -9,7 +9,7 @@ export default function printBestStudents(grades) {
       firstName: capitalizeFirstLetter(student.firstName),
       lastName: capitalizeFirstLetter(student.lastName),
     }))
-    .toObject();
+    .toJS(); // Convert to plain JavaScript object
 
   console.log(filteredGrades);
 }
