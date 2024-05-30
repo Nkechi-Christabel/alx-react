@@ -6,15 +6,12 @@ export default function printBestStudents(grades) {
     .filter((student) => student.score >= 70)
     .map((student) => ({
       ...student,
-      firstName: capitalizeFirstLetter(student.firstName),
-      lastName: capitalizeFirstLetter(student.lastName),
+      firstName:
+        student.firstName.charAt(0).toUpperCase() + student.firstName.slice(1),
+      lastName:
+        student.lastName.charAt(0).toUpperCase() + student.lastName.slice(1),
     }))
     .toObject();
 
   console.log(filteredGrades);
-}
-
-// Function to capitalize the first letter of a string
-export default function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }
