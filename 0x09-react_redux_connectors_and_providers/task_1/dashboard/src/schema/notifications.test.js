@@ -1,8 +1,8 @@
-import getAllNotificationsByUser, { normalized } from './notifications';
+import { normalizedData, getAllNotificationsByUser } from './notifications';
 
 describe('Test for Notifications.js', () => {
   it('verify that the function returns the correct data', () => {
-    const result = [
+    const expectedResults = [
       {
         guid: '2d8e40be-1c78-4de0-afc9-fcc147afd4d2',
         isRead: true,
@@ -20,14 +20,13 @@ describe('Test for Notifications.js', () => {
     ];
     const userId = '5debd764a7c57c7839d722e9';
 
-    getAllNotificationsByUser(userId);
+    const result = getAllNotificationsByUser(userId);
 
-    expect(getAllNotificationsByUser(userId)).toEqual(
-      expect.arrayContaining(result)
-    );
+    expect(result).toEqual(expect.arrayContaining(expectedResults));
   });
-  it('should match results', () => {
-    const results = [
+
+  it('should match normalized results', () => {
+    const expectedResults = [
       '5debd76480edafc8af244228',
       '5debd764507712e7a1307303',
       '5debd76444dd4dafea89d53b',
@@ -44,11 +43,11 @@ describe('Test for Notifications.js', () => {
       '5debd764de9fa684468cdc0b',
     ];
 
-    expect(normalized.result).toEqual(results);
+    expect(normalizedData.result).toEqual(expectedResults);
   });
 
   it('should have correct users entity', () => {
-    const user = {
+    const expectedUser = {
       age: 25,
       email: 'poole.sanders@holberton.nz',
       id: '5debd764a7c57c7839d722e9',
@@ -56,11 +55,13 @@ describe('Test for Notifications.js', () => {
       picture: 'http://placehold.it/32x32',
     };
 
-    expect(normalized.entities.users['5debd764a7c57c7839d722e9']).toEqual(user);
+    expect(normalizedData.entities.users['5debd764a7c57c7839d722e9']).toEqual(
+      expectedUser
+    );
   });
 
   it('should have a correct messages entity', () => {
-    const message = {
+    const expectedMessage = {
       guid: 'efb6c485-00f7-4fdf-97cc-5e12d14d6c41',
       isRead: false,
       type: 'default',
@@ -68,19 +69,19 @@ describe('Test for Notifications.js', () => {
     };
 
     expect(
-      normalized.entities.messages['efb6c485-00f7-4fdf-97cc-5e12d14d6c41']
-    ).toEqual(message);
+      normalizedData.entities.messages['efb6c485-00f7-4fdf-97cc-5e12d14d6c41']
+    ).toEqual(expectedMessage);
   });
 
   it('should have a correct notifications entity', () => {
-    const notificationDummy = {
+    const expectedNotification = {
       author: '5debd764f8452ef92346c772',
       context: '3068c575-d619-40af-bf12-dece1ee18dd3',
       id: '5debd7642e815cd350407777',
     };
 
     expect(
-      normalized.entities.notification['5debd7642e815cd350407777']
-    ).toEqual(notificationDummy);
+      normalizedData.entities.notifications['5debd7642e815cd350407777']
+    ).toEqual(expectedNotification);
   });
 });
